@@ -1,0 +1,33 @@
+
+    <%- include("../layout/boilerplate.ejs") %>
+
+    <div class="listings-container">
+        <div class="listing-form-container">
+            <h1>All Problems</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Problem Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(let problem of problemList) { %>
+                        <tr>
+                            <td><strong><%= problem.problemname %></strong></td>
+                            <td>
+                                <form action="/problems/see/<%=problem._id%>" method="get">
+                                    <button type="submit" class="button">click</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+
+            <form action="/problems/new" method="GET">
+                <button type="submit" class="button">Add New Problem</button>
+            </form>
+        </div>
+    </div>
+

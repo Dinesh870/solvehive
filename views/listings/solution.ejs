@@ -1,0 +1,48 @@
+
+
+    <%- include("../layout/boilerplate.ejs") %>
+
+    <div class="solution-container padding">
+        <h2 class="problem-name heading-font"><%= problem.problemname %></h2>
+        <div class="problem-statement">
+            <p class="text-font"><strong class="heading-font">Problem Statement:</strong> <%= problem.problemstatement %></p>
+        </div>
+
+            <hr class="margin-top">
+            <h2 class="heading-font margin-top">All Approaches</h2>
+            <div class="all-solutions-container">
+                <div class="first-solution">
+                    <% let method = 1; %>
+                    <% for(let sol of solution) { %>
+                        <hr class="margin-top">
+                        <div class="first-solution-heading margin-top">
+                            <% if(typeof sol.methodName !== "undefined") { %>
+                                <h3 class="heading-font"><%= sol.methodName %></h3>
+                            <% } else { %>
+                                <h3 class="heading-font">Alternative</h3>
+                            <% } %>
+                        </div>
+                        
+                        <div class="first-solution-description margin-top">
+                            <p class="text-font">
+                                <strong class="heading-font">Intuition:</strong> <%= sol.intuition %>
+                            </p>
+                        </div>
+
+                        <div class="code-container">
+                            <h4 class="heading-font margin-top">Algorithm</h4>
+                            <div class="algorithm-box" style="padding: 1rem;">
+                                <ul class="margin-left text-font">
+                                    <% for(let al of sol.algorithm) { %>
+                                        <li><%= al %></li>
+                                    <% } %>
+                                </ul>
+                            </div>
+                        </div>
+                    <% method++; } %>
+                </div>
+            </div>
+        </div>
+    
+    <!-- </div> -->
+    <!-- <div class="solution-head-container"> -->

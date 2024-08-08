@@ -1,0 +1,60 @@
+<%- include("../layout/boilerplate.ejs") %>
+
+    <div class="upcoming-contest-container listings-container">
+        <div class="listing-form-container upcoming-contest-table">
+            <table>
+                <!-- <caption>upcoming-contest</caption> -->
+                <thead>
+                    <tr>
+                        <th>S.No.</th>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Duration</th>
+                        <th>Link</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% let s_no=1; %>
+                        <% for(let contest of upcomingContests) { %>
+                            <tr>
+                                <% 
+                                    const s=contest.startTimeSeconds; 
+                                    const myDate=new Date(s*1000);
+                                    const year = myDate.getFullYear();
+                                    let month = myDate.getMonth()+1;
+                                    let day = myDate.getDate();
+
+                                    if((month+"").length == 1) {
+                                        month = '0'+month;
+                                    }
+                                    if((day+"").length == 1) {
+                                        day = '0'+day;
+                                    }
+
+                                    const time=myDate.toLocaleTimeString(); 
+
+                                    const seconds = contest.durationSeconds;
+                                    const duration = seconds/3600;
+                                %>
+                                    <td>
+                                        <%= s_no %>.
+                                    </td>
+                                    <td>
+                                        <%= contest.name %>
+                                    </td>
+                                    <td>
+                                        <%= day %>/<%= month %>/<%= year %>
+                                    </td>
+                                    <td>
+                                        <%= time %>
+                                    </td>
+                                    <td><%= duration.toFixed(2)%> Hr.</td>
+                                    <td><a href="https://codeforces.com/contests" target="_blank">link</a></td>
+                            </tr>
+                            <% s_no++; %>
+                                <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>

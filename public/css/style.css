@@ -1,0 +1,763 @@
+/* Reset and Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+:root {
+    /* header */
+    --header-height: 70px;
+    --card-height: 9rem;
+    --main-height: 500px;
+
+    /* Colors */
+    --primary-color: #4CAF50;
+    --primary-color-dark: #45a049;
+    --secondary-color: #0276FF;
+    --secondary-color-dark: #1C84FF;
+    --text-color: #333;
+    --text-color-light: #555;
+    --background-color-light: #f4f4f4;
+    --background-color-dark: #ffffff;
+    --background-footer-color: #d5d5d5;
+    --border-color: #ddd;
+    --box-shadow-light: rgba(0, 0, 0, 0.1);
+    --box-shadow-dark: rgba(0, 0, 0, 0.2);
+    --heading-color: #374137;
+    --link-color: #0276FF;
+
+    /* Spacing */
+    --padding-small: 0.5rem;
+    --padding-medium: 0.75rem;
+    --padding-large: 1rem;
+    --padding-xlarge: 1.5rem;
+    --padding-xxlarge: 2rem;
+    --margin-small: 0.5rem;
+    --margin-medium: 1rem;
+    --margin-large: 1.5rem;
+    --margin-xlarge: 2rem;
+    --margin-xxlarge: 3rem;
+
+    /* Font Sizes */
+    --font-size-small: 0.9rem;
+    --font-size-medium: 1rem;
+    --font-size-large: 1.5rem;
+    --font-size-xlarge: 1.8rem;
+
+    /* Border Radius */
+    --border-radius-small: 4px;
+    --border-radius-medium: 8px;
+
+    /* Box Shadow */
+    --box-shadow-small: 0 2px 5px var(--box-shadow-light);
+    --box-shadow-large: 0 4px 8px var(--box-shadow-light);
+    --box-shadow-hover: 0 4px 10px var(--box-shadow-dark);
+
+    /* Widths */
+    --container-max-width: 1200px;
+    --form-max-width: 900px;
+    --input-width: 100%;
+}
+
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* You might not need to change this */
+    color: var(--text-color);
+    background-color: var(--background-color-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: var(--margin-xlarge);
+    /* min-height: 100vh; */
+    /* border: 2px solid var(--border-color); */ /* Uncomment if you need a border and adjust the color */
+    padding: 0 var(--padding-medium); /* Adjusted padding for mobile responsiveness */
+}
+
+
+
+/* Header */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: var(--padding-medium) var(--padding-large);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+
+/* Footer */
+footer {
+    background-color: var(--background-footer-color); /* Use the background color variable */
+    padding: var(--padding-large) var(--padding-medium); /* Use padding variables */
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: var(--z-index-footer); /* Use z-index variable */
+}
+
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: var(--container-max-width); /* Use the container max-width variable */
+    margin: 0 auto; /* Center the navbar horizontally */
+}
+
+.logo {
+    font-size: var(--font-size-large); /* Use the large font size variable */
+    font-weight: 700; /* Bold font weight */
+}
+
+.logo a {
+    text-decoration: none;
+    color: var(--background-color-dark); /* Use the dark background color variable */
+}
+
+.nav-links {
+    display: flex;
+    gap: var(--margin-medium); /* Use the margin variable for spacing between links */
+}
+
+.nav-links a {
+    color: var(--background-color-light); /* Use the light background color variable for text color */
+    text-decoration: none;
+    padding: var(--padding-small) var(--padding-large); /* Use padding variables */
+    border-radius: var(--border-radius-small); /* Use small border-radius variable */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition for background color and transform */
+}
+
+.nav-links a:hover {
+    background-color: var(--primary-color-dark); /* Use the dark primary color variable */
+    transform: scale(1.01); /* Slightly scale up on hover */
+}
+
+
+/* Home Page Container */
+.home-container {
+    width: 100%;
+    max-width: var(--container-max-width); /* Use the container max-width variable */
+    padding: var(--padding-xxlarge) var(--padding-medium) var(--padding-medium); /* Use padding variables */
+    background-color: var(--background-color-dark); /* Use the dark background color variable */
+    border-radius: var(--border-radius-medium); /* Use medium border-radius variable */
+    box-shadow: var(--box-shadow-large); /* Use large box-shadow variable */
+    margin-top: calc(var(--padding-xlarge) + var(--header-height)); /* Adjust margin to account for the fixed header height */
+}
+
+
+/* Section */
+.section {
+    width: 100%;
+    padding: var(--padding-medium); /* Use the padding variable */
+}
+
+.section h2 {
+    border-bottom: 2px solid var(--heading-color); /* Use the heading color variable */
+    padding-bottom: var(--padding-small); /* Use the padding variable for consistent spacing */
+    margin-bottom: var(--margin-medium); /* Use the margin variable for consistent spacing */
+    color: var(--heading-color); /* Use the heading color variable */
+}
+
+
+/* Feature Cards */
+.feature-cards {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap; /* Enable wrapping of cards */
+    gap: var(--margin-small); /* Use the margin variable for consistent spacing */
+    margin-top: var(--margin-small); /* Use the margin variable for consistent spacing */
+}
+
+.card {
+    min-height: var(--card-height);
+    background: var(--background-color-dark); /* Use the background color variable */
+    border: 1px solid var(--border-color); /* Use the border color variable */
+    border-radius: var(--border-radius-medium); /* Use the medium border-radius variable */
+    padding: var(--padding-medium); /* Use the medium padding variable */
+    box-shadow: var(--box-shadow-small); /* Use the small box-shadow variable */
+    transition: transform 0.2s, box-shadow 0.2s; /* Smooth transition effects */
+    flex: 1 1 calc(33% - var(--margin-small)); /* Responsive card width with margin */
+    max-width: 50%; /*Ensure card width is responsive*/
+}
+
+.card.full-width {
+    flex: 1 1 100%; /* Full width for the full-width card */
+    max-width: 100%; /* Ensure card takes full width */
+}
+
+.card:hover {
+    transform: scale(1.01); /* Slightly scale up on hover */
+    box-shadow: var(--box-shadow-hover); /* Use the hover box-shadow variable */
+}
+
+.card h3 {
+    margin: 0 0 var(--margin-small); /* Use the margin variable for consistent spacing */
+    color: var(--text-color); /* Use the text color variable */
+}
+
+.card a {
+    text-decoration: none;
+    color: var(--link-color); /* Use the primary color variable */
+    font-weight: 600; /* Semi-bold text weight */
+}
+
+.card a:hover {
+    text-decoration: underline; /* Underline on hover for links */
+}
+
+.card p {
+    color: var(--text-color-light); /* Use the light text color variable */
+    line-height: 1.6; /* Line height for readability */
+}
+
+
+/* Listings Page Styles */
+
+/* Listings Container */
+.listings-container {
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Centering the form container */
+    padding-top: var(--padding-xxlarge); /*Offset for fixed header, use a variable if defined */
+}
+
+/* Form Container */
+
+.listing-form-container {
+    width: 90%;
+    max-width: var(--form-max-width); /* Use the form max-width variable */
+    margin: 0;
+    margin-bottom: var(--margin-large); /* Use the margin variable for consistent spacing */
+    padding: var(--padding-xxlarge); /* Use the padding variable for consistent spacing */
+    background-color: var(--background-color-dark); /* Use the background color variable */
+    border-radius: var(--border-radius-medium); /* Use the medium border-radius variable */
+    box-shadow: var(--box-shadow-large); /* Use the large box-shadow variable */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: var(--margin-large);
+}
+
+thead {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+th, td {
+    padding: var(--padding-large);
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+th {
+    font-weight: bold;
+}
+
+tbody tr:nth-child(even) {
+    background-color: var(--background-color-light);
+}
+
+tbody tr:hover {
+    background-color: var(--background-color-dark);
+}
+
+
+/* Button Styles */
+.button {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: var(--padding-medium) var(--padding-large);
+    border-radius: var(--border-radius-small);
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.button:hover {
+    background-color: var(--secondary-color-dark);
+    transform: scale(1.05);
+}
+
+
+
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* contest.html page */
+.contest-platform-container {
+    min-height: var(--main-height);
+    margin: var(--margin-xxlarge);
+    padding: var(--padding-xxlarge);
+    display: flex;
+    align-items: center;
+}
+/* .platform-lists{
+    align-items: center;
+} */
+
+
+/* Common Styles for Login and Signup Pages */
+.login-signup-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: var(--padding-large);
+    margin-top: var(--header-height); /* Offset for fixed header */
+}
+
+/* Form Container */
+.login-signup-form-container {
+    width: 100%;
+    max-width: calc(var(--form-max-width)*0.55); /* Ensure form does not exceed a certain width */
+    padding: var(--padding-xxlarge);
+    background-color: var(--background-color-dark);
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--box-shadow-large);
+    text-align: center; /* Center-align text inside form container */
+}
+
+/* Form Styles */
+.login-signup-form-container h2 {
+    margin-bottom: var(--margin-large);
+    color: var(--heading-color);
+}
+
+
+.form-group {
+    margin-bottom: var(--margin-large);
+    text-align: left; /* Align labels and inputs to the left */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: var(--margin-small);
+    color: var(--text-color-light);
+}
+
+.form-group input {
+    width: 100%;
+    padding: var(--padding-medium);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-small);
+    box-sizing: border-box;
+}
+
+.link {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+
+
+/* this is the details.html page */
+/* Details Page Styles */
+
+/* Container for details page */
+.details-container {
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin: var(--margin-xxlarge) auto;
+    padding: var(--padding-large);
+}
+
+/* Problem Container */
+.details-problem-container {
+    background-color: var(--background-color-dark);
+    border-radius: var(--border-radius-medium);
+    padding: var(--padding-xxlarge);
+    box-shadow: var(--box-shadow-large); /* Re-enabled box-shadow with variable */
+}
+
+
+/* Problem Title */
+.problem-name {
+    margin-bottom: var(--margin-large);
+    color: var(--heading-color);
+}
+
+/* Problem Statement */
+.problem-statement-container {
+    margin-bottom: var(--margin-large);
+}
+
+/* Example Section */
+.problem-example {
+    margin-top: var(--margin-large);
+}
+
+.example-individual {
+    margin-left: var(--margin-large);
+}
+
+/* Constraints Section */
+.constraints-container {
+    margin-top: var(--margin-large);
+}
+
+/* Button Container */
+.buttons-container {
+    margin-top: var(--margin-xlarge);
+    display: flex;
+    justify-content: center;
+    gap: var(--margin-medium);
+    margin: var(--margin-xlarge) 0;
+}
+
+
+/* Add some general styles for lists and text fonts */
+ul.text-font {
+    list-style-type: disc;
+}
+
+.text-font {
+    color: var(--text-color-light);
+}
+
+.heading-font {
+    color: var(--heading-color);
+    font-weight: bold;
+}
+
+.margin-top {
+    margin-top: var(--margin-large);
+}
+
+.margin-left {
+    margin-left: var(--margin-large);
+}
+
+/* solution page */
+/* Solution Page Styles */
+
+/* Container for Solution Page */
+.solution-container {
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin: var(--margin-xxlarge) auto;
+    padding: var(--padding-large);
+    background-color: var(--background-color-dark);
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--box-shadow-large);
+}
+
+/* Problem Name */
+.problem-name {
+    margin-bottom: var(--margin-large);
+    color: var(--heading-color);
+    font-size: var(--font-size-xlarge);
+    padding-top: var(--padding-xxlarge);
+}
+
+/* Problem Statement */
+.problem-statement {
+    margin-bottom: var(--margin-xlarge);
+}
+
+/* All Approaches Section */
+.all-solutions-container {
+    margin-top: var(--margin-xlarge);
+}
+
+.first-solution {
+    margin-bottom: var(--margin-xlarge);
+}
+
+/* Solution Heading */
+.first-solution-heading {
+    margin-bottom: var(--margin-medium);
+}
+
+.first-solution-heading h3 {
+    color: var(--text-color);
+    font-size: var(--font-size-large);
+    border-bottom: 2px solid var(--background-footer-color);
+    padding-bottom: var(--padding-small);
+}
+
+/* Solution Description */
+.first-solution-description {
+    margin-bottom: var(--margin-large);
+}
+
+.first-solution-description p {
+    font-size: var(--font-size-medium);
+    line-height: 1.6;
+}
+
+
+/* Code Container */
+.code-container {
+    margin-top: var(--margin-large);
+}
+
+.algorithm-box {
+    background-color: var(--background-color-light);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-small);
+    padding: var(--padding-medium);
+}
+
+.algorithm-box ul {
+    margin-left: var(--margin-large);
+    list-style-type: disc;
+}
+
+.algorithm-box li {
+    margin-bottom: var(--margin-small);
+    font-size: var(--font-size-medium);
+}
+
+
+/* solution form page */
+/* Solution Form Page Styles */
+
+/* Container for Solution Form */
+.solution-form-container {
+    width: 100%;
+    max-width: var(--form-max-width); /* Set a max-width for a more contained form */
+    margin: var(--margin-xxlarge) auto;
+    padding: var(--padding-xxlarge);
+    background-color: var(--background-color-dark);
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--box-shadow-large);
+}
+
+
+/* Input Box Styles */
+.input-box {
+    margin-bottom: var(--margin-large);
+}
+
+.input-box label {
+    display: block;
+    margin-bottom: var(--margin-small);
+    font-weight: bold;
+    color: var(--heading-color);
+}
+
+.input-box input[type="text"],
+.input-box textarea {
+    width: 100%;
+    padding: var(--padding-medium);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-small);
+    box-sizing: border-box;
+    font-size: var(--font-size-medium);
+    line-height: 1.6;
+}
+
+.input-box textarea {
+    resize: vertical; /* Allow vertical resizing of textarea */
+    height: 150px; /* Default height for textarea */
+}
+
+/* Algorithm Container */
+.algorithm-container {
+    margin-bottom: var(--margin-large);
+}
+
+.algo-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--margin-medium);
+    border: 1px solid var(--box-shadow-light);
+    padding: var(--padding-small);
+    border-radius: var(--border-radius-small);
+}
+
+.algo-box ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.algo-box li {
+    display: flex;
+    align-items: center;
+    gap: var(--margin-medium);
+}
+
+.algo-box input[type="text"] {
+    flex: 1;
+}
+
+.button:hover {
+    background-color: var(--secondary-color-dark);
+    transform: scale(1.05);
+}
+
+/* Submit Container */
+.submit-container {
+    text-align: center; /* Center-align the submit button */
+    margin-top: var(--margin-xlarge);
+}
+
+/* this is new problem add page i.e., new.html */
+/* Add Problem Page Styles */
+
+/* Container for Add Problem Form */
+.add-problem-container {
+    width: 100%;
+    max-width: var(--form-max-width); /* Adjust as needed */
+    margin: var(--margin-xxlarge) auto;
+    padding: var(--padding-xxlarge);
+    background-color: var(--background-color-dark);
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--box-shadow-large);
+}
+
+
+/* Input Box Styles */
+.input-box {
+    margin-bottom: var(--margin-large);
+}
+
+.input-box label {
+    display: block;
+    margin-bottom: var(--margin-small);
+    font-weight: bold;
+    color: var(--heading-color);
+}
+
+.input-box input[type="text"],
+.input-box textarea {
+    width: 100%;
+    padding: var(--padding-medium);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-small);
+    box-sizing: border-box;
+    font-size: var(--font-size-medium);
+    line-height: 1.6;
+}
+
+.input-box textarea {
+    resize: vertical; /* Allow vertical resizing of textarea */
+    height: 150px; /* Default height for textarea */
+}
+
+/* Single Box Styling for Examples and Constraints */
+.single-box {
+    margin-bottom: var(--margin-large);
+    border: 1px solid var(--box-shadow-light);
+    padding: var(--padding-medium);
+}
+
+.single-box ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.single-box li {
+    display: flex;
+    flex-direction: column;
+    gap: var(--margin-small);
+    margin-bottom: var(--margin-medium);
+}
+
+.single-box input[type="text"] {
+    width: calc(100% - (2 * var(--padding-medium))); /* Full width minus padding */
+}
+
+
+/* Button Container */
+.button-container {
+    margin-top: var(--margin-small);
+    text-align: center; /* Center-align the button */
+}
+
+/* upcoming contest form container listing */
+.upcoming-contest-container{
+    min-height: calc(var(--main-height));
+    margin-top: var(--margin-xxlarge);
+}
+.upcoming-contest-table{
+    justify-content: center;
+}
+
+/* Combined Responsive Design for All Pages */
+@media (max-width: 768px) {
+    /* Add Problem Page */
+    .add-problem-container {
+        padding: 1rem;
+    }
+
+    .input-box input[type="text"],
+    .input-box textarea {
+        font-size: 0.9rem;
+    }
+
+    .single-box input[type="text"] {
+        font-size: 0.9rem;
+    }
+
+    /* Cards */
+    .card {
+        flex: 1 1 100%; /* Full width on smaller screens */
+        max-width: 100%;
+    }
+    
+    .contest-platform-container {
+        margin: 0;
+        margin-top: inherit;
+        width: 95%;
+        padding: 0;
+        padding-top: var(--padding-xxlarge);
+    }
+
+    /* Solution Form */
+    .solution-form-container {
+        padding: 1rem;
+    }
+
+    .algo-box input[type="text"] {
+        font-size: 0.9rem;
+    }
+
+    /* Solution Page */
+    .solution-container {
+        padding: 1rem;
+    }
+
+    .problem-name {
+        font-size: 1.5rem;
+    }
+
+    .first-solution-heading h3 {
+        font-size: 1.25rem;
+    }
+
+    .algorithm-box li {
+        font-size: 0.9rem;
+    }
+}

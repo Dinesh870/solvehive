@@ -1,0 +1,41 @@
+<%- include("../layout/boilerplate.ejs") %>
+
+    <div class="upcoming-contest-container listings-container">
+        <div class="listing-form-container upcoming-contest-table">
+            <table>
+                <!-- <caption>upcoming-contest</caption> -->
+                <thead>
+                    <tr>
+                        <th>S.No.</th>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <!-- <th>Duration</th> -->
+                        <th>Link</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% let s_no=1; %>
+                        <% for(let contest of upcomingContests) { %>
+                            <tr>
+                                <td>
+                                    <%= s_no %>.
+                                </td>
+                                <td>
+                                    <%= contest.contestname %>
+                                </td>
+                                <td>
+                                    <%= contest.startDate %>
+                                </td>
+                                <td>
+                                    <%= contest.time %>
+                                </td>
+                                <td><a href="https://www.geeksforgeeks.org/events?itm_source=geeksforgeeks&itm_medium=main_header&itm_campaign=contests"
+                                        target="_blank">link</a></td>
+                            </tr>
+                            <% s_no++; %>
+                                <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
