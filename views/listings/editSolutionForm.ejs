@@ -1,0 +1,39 @@
+
+<%- include("../layout/boilerplate.ejs")  %>
+
+<body>
+    <div class="solution-form-container">
+        <form action="/problems/see/<%= solution._id %>/solution/edit" method="post">
+            <div class="method-container input-box">
+                <label for="method">Method Name</label>
+                <input type="text" name="method" id="method" value="<%= solution.methodName %>" required>
+            </div>
+
+            <div class="Intuition-container input-box">
+                <label for="Intuition">Intuition</label>
+                <textarea name="Intuition" id="Intuition" placeholder="Write here" required><%= solution.intuition  %></textarea>
+            </div>
+
+            <div class="algorithm-container input-box">
+                <label for="algorithm">Algorithm</label>
+                <div class="algo-box">
+                    <ul id="input_algorithm">
+                        <label for="algorithms"></label>
+                        <% solution.algorithm.forEach(element => { %>
+                            <li class="input-element">
+                                <input type="text" name="algorithms" id="" value="<%= element %>" required>
+                            </li>
+                            <% }) %>
+                    </ul>
+                    <button type="button" class="button" onclick="addAlgorithmSteps()">Add More Steps</button>
+                </div>
+            </div>
+
+            <div class="submit-container">
+                <input type="submit" class="button" value="Submit">
+            </div>
+        </form>
+    </div>
+</body>
+
+

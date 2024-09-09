@@ -1,0 +1,22 @@
+<%- include("../layout/boilerplate.ejs") %>
+
+<body>
+    <div class="login-signup-container">
+        <div class="login-signup-form-container">
+            <h2>OPT Verification</h2>
+            <form id="loginForm" method=post action="/signup/confirmUser?_method=PUT">
+                <div class="form-group">
+                    <label for="email">Email:
+                    </label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="otp">Enter OPT:
+                    </label>
+                    <input type="number" id="otp" name="otp" required>
+                </div>
+                <button type="submit" class="button">submit</button>
+            </form>
+        </div>
+    </div>
+</body>

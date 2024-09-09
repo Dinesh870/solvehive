@@ -1,44 +1,58 @@
 
 <%- include("../layout/boilerplate.ejs") %>
 
-<div class="details-container">
-    <div class="details-problem-container">
-        <h2 class="problem-name heading-font"><%= problem.problemname %></h2>
-        <div class="problem-statement-container">
-            <p class="text-font"><%= problem.problemstatement %></p>
-        </div>
-        <div class="problem-example margin-top">
-            <% let count = 1; %> <!-- Declare count variable once here -->
-            <% problem.sampleexample.forEach((example, index) => { %>
-                <p class="text-font"><strong>Example <%= count %></strong></p>
-                <div class="example-individual margin-left">
-                    <p><strong class="heading-font">Input: </strong><span class="text-font"><%= example.input %></span></p>
-                    <p><strong class="heading-font">Output: </strong><span class="text-font"><%= example.output %></span></p>
-                    <% if (example.explanation) { %>
-                        <p><strong class="heading-font">Explanation: </strong><span class="text-font"><%= example.explanation %></span></p>
-                    <% } %>
-                    <% count++; %> <!-- Increment count -->
-                </div>
-                <br>
-            <% }); %>
-        </div>
-        <div class="constraints-container">
-            <p><strong class="heading-font">Constraints</strong></p>
-            <ul class="margin-left text-font">
-                <% problem.constraints.forEach(constraint => { %>
-                    <li><%= constraint %></li>
+<!-- <body> -->
+    <div class="details-container">
+        <div class="details-problem-container">
+            <h2 class="problem-name heading-font"><%= problem.problemname %></h2>
+            <div class="problem-statement-container">
+                <p class="text-font"><%= problem.problemstatement %></p>
+            </div>
+            <div class="problem-example margin-top">
+                <% let count = 1; %> <!-- Declare count variable once here -->
+                <% problem.sampleexample.forEach((example, index) => { %>
+                    <p class="text-font"><strong>Example <%= count %></strong></p>
+                    <div class="example-individual margin-left">
+                        <p><strong class="heading-font">Input: </strong><span class="text-font"><%= example.input %></span></p>
+                        <p><strong class="heading-font">Output: </strong><span class="text-font"><%= example.output %></span></p>
+                        <% if (example.explanation) { %>
+                            <p><strong class="heading-font">Explanation: </strong><span class="text-font"><%= example.explanation %></span></p>
+                        <% } %>
+                        <% count++; %> <!-- Increment count -->
+                    </div>
+                    <br>
                 <% }); %>
-            </ul>
+            </div>
+            <div class="constraints-container">
+                <p><strong class="heading-font">Constraints</strong></p>
+                <ul class="margin-left text-font">
+                    <% problem.constraints.forEach(constraint => { %>
+                        <li><%= constraint %></li>
+                    <% }); %>
+                </ul>
+            </div>
+        </div>
+    
+        <div class="buttons-container">
+            <form action="/problems/see/<%= problem._id %>/solution" method="get">
+                <button type="submit" class="button">Solution</button>
+            </form>
+    
+            <% if(adminLogin) { %> 
+                <form action="/problems/see/<%= problem._id %>/solve" method="get">
+                    <button type="submit" class="button">Solve It</button>
+                </form>
+        
+                <form action="/problems/see/<%= problem._id %>/edit" method="get">
+                    <button type="submit" class="button">Edit It</button>
+                </form>
+        
+                <!-- /problems/see/:id/delete -->
+                <form action="/problems/see/<%= problem._id %>/delete?_method=DELETE" method="post">
+                    <button type="submit" class="button" style="background: red;">Delete</button>
+                </form>
+            <% } %>
+
         </div>
     </div>
-
-    <div class="buttons-container">
-        <form action="/problems/see/<%= problem._id %>/solution" method="get">
-            <button type="submit" class="button">Solution</button>
-        </form>
-
-        <form action="/problems/see/<%= problem._id %>/solve" method="get">
-            <button type="submit" class="button">Solve It</button>
-        </form>
-    </div>
-</div>
+<!-- </body> -->

@@ -1,19 +1,30 @@
 <%- include("../layout/boilerplate.ejs") %>
 
-<div class="login-signup-container">
-    <div class="login-signup-form-container">
-        <h2>Login</h2>
-        <form id="loginForm">
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <button type="submit" class="button">Login</button>
-        </form>
-        <p>Don't have an account? <a href="/signup" class="link">Sign up here</a></p>
+<body>
+    <div class="login-signup-container">
+        <div class="login-signup-form-container">
+            <h2>Login</h2>
+            <form id="feedbackForm" method="post" action="/login">
+                <div class="form-group">
+                    <label for="role">Role:</label>
+                    <select name="role" required>
+                        <option value="user">User</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="button">Login</button>
+            </form>
+            <p>Don't have an account? <a href="/signup" class="link">Sign up here</a></p>
+            <p>Forgate Password? <a href="/recoverPassword" class="link">click here</a></p>
+        </div>
     </div>
-</div>
+    
+</body>

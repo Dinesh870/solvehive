@@ -29,6 +29,11 @@ const problemSchema = new Schema({
     problemstatement: {
         type: String,
     },
+    difficulty:{
+        type: String,
+        enum: ["easy", "medium", "hard"],
+        required:true,
+    },
     sampleexample: {
         type: [sampleExampleSchema],
         required: true,
@@ -40,7 +45,7 @@ const problemSchema = new Schema({
     date: {
         type: Date,
         default: Date.now(),
-    },
+    }
 });
 
 const Problem = mongoose.model("Problem", problemSchema);

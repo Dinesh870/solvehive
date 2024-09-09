@@ -1,0 +1,29 @@
+<%- include("../layout/boilerplate.ejs") %>
+
+<body>
+    <div class="add-problem-container feedback-container">
+        <h2 style="text-align: center;"><span>Feedback</span></h2>
+        <form action="/feedback" method="post">
+            <div class="input-box">
+                <label for="userName">Full Name:</label>
+                <input class="userName" type="text" name="userName" placeholder="Full Name" required>
+            </div>
+            <div class="input-box">
+                <label for="email">Registered Email:</label>
+                <input class="email" type="email" name="email" placeholder="Email" required>
+            </div>
+            <div class="input-box">
+                <label for="subject">Subject:</label>
+                <input class="subject" type="text" name="subject" placeholder="Subject" required>
+            </div>
+            <div class="input-box">
+                <label for="feedbackmessage">Message For Us:</label>
+                <textarea name="feedbackmessage" id="feedbackmessage" placeholder="Write here..." required></textarea>
+            </div>
+            
+            <div class="button-container">
+                <button type="submit" class="button">Submit</button>
+            </div>
+        </form>
+    </div>    
+</body>

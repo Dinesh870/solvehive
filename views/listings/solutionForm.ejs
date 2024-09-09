@@ -1,34 +1,37 @@
 
     <%- include("../layout/boilerplate.ejs")  %>
 
-    <div class="solution-form-container">
-        <form action="/problems/see/<%= problem._id %>/solve" method="post">
-            <div class="method-container input-box">
-                <label for="method">Method Name</label>
-                <input type="text" name="method" id="method" placeholder="e.g., brute force, better solution, optimal solution" required>
-            </div>
-
-            <div class="Intuition-container input-box">
-                <label for="Intuition">Intuition</label>
-                <textarea name="Intuition" id="Intuition" placeholder="Write here" required></textarea>
-            </div>
-
-            <div class="algorithm-container input-box">
-                <label for="algorithm">Algorithm</label>
-                <div class="algo-box">
-                    <ul id="input_algorithm">
-                        <li class="input-element">
-                            <input type="text" name="algorithms" id="algorithms" placeholder="Enter step 1" required>
-                        </li>
-                    </ul>
-                    <button type="button" class="button" onclick="addAlgorithmSteps()">Add More Steps</button>
+    <body>
+        <div class="solution-form-container">
+            <form action="/problems/see/<%= problem._id %>/solve" method="post">
+                <div class="method-container input-box">
+                    <label for="method">Method Name</label>
+                    <input type="text" name="method" id="method" placeholder="e.g., brute force, better solution, optimal solution" required>
                 </div>
-            </div>
-
-            <div class="submit-container">
-                <input type="submit" class="button" value="Submit">
-            </div>
-        </form>
-    </div>
+    
+                <div class="Intuition-container input-box">
+                    <label for="Intuition">Intuition</label>
+                    <textarea name="Intuition" id="Intuition" placeholder="Write here" required></textarea>
+                </div>
+    
+                <div class="algorithm-container input-box">
+                    <label for="algorithm">Algorithm</label>
+                    <div class="algo-box">
+                        <ul id="input_algorithm">
+                            <label for="algorithms"></label>
+                            <li class="input-element">
+                                <input type="text" name="algorithms" id="algorithms" placeholder="Enter step 1" required>
+                            </li>
+                        </ul>
+                        <button type="button" class="button" onclick="addAlgorithmSteps()">Add More Steps</button>
+                    </div>
+                </div>
+    
+                <div class="submit-container">
+                    <input type="submit" class="button" value="Submit">
+                </div>
+            </form>
+        </div>
+    </body>
     
 

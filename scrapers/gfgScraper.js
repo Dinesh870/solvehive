@@ -1,8 +1,8 @@
 import puppeteer from "puppeteer";
 
-const url = 'https://www.geeksforgeeks.org/events?itm_source=geeksforgeeks&itm_medium=main_header&itm_campaign=contests'; // Replace with your target URL
 
 export async function scrapeData() {
+    const url = 'https://www.geeksforgeeks.org/events?itm_source=geeksforgeeks&itm_medium=main_header&itm_campaign=contests'; // Replace with your target URL
     const browser = await puppeteer.launch({ headless: true }); // Launch headless browser
     const page = await browser.newPage();
     await page.goto(url, { waitUntil: 'networkidle2' }); // Wait until network is idle
@@ -67,4 +67,73 @@ export async function scrapeData() {
     return data;
 }
 
-// scrapeData();
+/** COMPLETED */
+// const problemOfTheDayScrapper = async () => {
+//     const url = "https://www.geeksforgeeks.org/problem-of-the-day";
+
+//     const browser = await puppeteer.launch({ headless: true }); // Launch headless browser
+//     const page = await browser.newPage();
+//     await page.goto(url, { waitUntil: 'networkidle2' });
+
+//     const data = await page.evaluate(()=>{
+//         const container = document.querySelector('.problemOfTheDay_problemContainer__BmMDm');
+//         if(!container) {
+//             return {error: "not found"}
+//         }
+//         const html = container.innerHTML; // Get the inner HTML of the container
+//         const problemName = container.querySelector('.problemOfTheDay_problemContainerTxt__pPZ3Z').textContent;
+//         const problem_address = container.querySelector('div a').href;
+        
+//         return {
+//             platform: 'GeeksforGeeks',
+//             problemName: problemName,
+//             href: problem_address
+//         }
+//     });
+// }
+
+// problemOfTheDayScrapper()
+
+/** TODO */
+// const leetcodePOTD = async () => {
+//     const url = "https://leetcode.com/problemset/";
+
+//     const browser = await puppeteer.launch({ headless: true }); // Launch headless browser
+//     const page = await browser.newPage();
+//     await page.goto(url, { waitUntil: 'networkidle2' });
+
+//     // Ensure content is fully loaded
+//     try {
+//         // Increase timeout and wait for a specific element to ensure content is loaded
+//         await page.waitForSelector('div[role="row"]', { timeout: 60000 });
+//     } catch (error) {
+//         console.error('Error waiting for selector:', error);
+//          // Capture a screenshot for debugging
+//          await page.screenshot({ path: 'debug-screenshot.png' });
+//          // Print page content for debugging
+//          const pageContent = await page.content();
+//          console.log(pageContent);
+//         await browser.close();
+//         return;
+//     }
+
+//     // Debug: Take a screenshot to verify the page content
+//     // await page.screenshot({ path: 'debug-screenshot.png' });
+    
+//     const data = await page.evaluate(()=>{
+//         const container = document.querySelectorAll('div[role="row"]');
+//         if(container.length == 0) {
+//             return {error: "not found"}
+//         }
+//         let result = [];
+//         container.forEach(e=>{
+//             const textContent = e.innerHTML;
+//             result.push(textContent);
+//         });
+//         return {data: result}
+//     });
+//     await browser.close();
+//     console.log(data);
+// }
+// leetcodePOTD();
+

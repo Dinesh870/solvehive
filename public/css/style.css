@@ -4,6 +4,7 @@
     padding: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
+    height: auto;
 }
 
 :root {
@@ -13,20 +14,22 @@
     --main-height: 500px;
 
     /* Colors */
-    --primary-color: #4CAF50;
+    --primary-color: #4caf50;
     --primary-color-dark: #45a049;
-    --secondary-color: #0276FF;
-    --secondary-color-dark: #1C84FF;
+    --secondary-color: #0276ff;
+    --secondary-color-dark: #1c84ff;
     --text-color: #333;
     --text-color-light: #555;
     --background-color-light: #f4f4f4;
     --background-color-dark: #ffffff;
     --background-footer-color: #d5d5d5;
+    --background-user-color: #2c3e50;
+    --hover-color: #c9c7c77b;
     --border-color: #ddd;
     --box-shadow-light: rgba(0, 0, 0, 0.1);
     --box-shadow-dark: rgba(0, 0, 0, 0.2);
     --heading-color: #374137;
-    --link-color: #0276FF;
+    --link-color: #0276ff;
 
     /* Spacing */
     --padding-small: 0.5rem;
@@ -61,9 +64,8 @@
     --input-width: 100%;
 }
 
-
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* You might not need to change this */
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* You might not need to change this */
     color: var(--text-color);
     background-color: var(--background-color-light);
     display: flex;
@@ -75,8 +77,6 @@ body {
     /* border: 2px solid var(--border-color); */ /* Uncomment if you need a border and adjust the color */
     padding: 0 var(--padding-medium); /* Adjusted padding for mobile responsiveness */
 }
-
-
 
 /* Header */
 header {
@@ -90,19 +90,7 @@ header {
     z-index: 1000;
 }
 
-
 /* Footer */
-footer {
-    background-color: var(--background-footer-color); /* Use the background color variable */
-    padding: var(--padding-large) var(--padding-medium); /* Use padding variables */
-    text-align: center;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    z-index: var(--z-index-footer); /* Use z-index variable */
-}
-
 
 /* Navbar */
 .navbar {
@@ -122,37 +110,68 @@ footer {
     text-decoration: none;
     color: var(--background-color-dark); /* Use the dark background color variable */
 }
-
+.links{
+    min-width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2.25rem;
+    /* border: 2px solid black; */
+}
 .nav-links {
     display: flex;
     gap: var(--margin-medium); /* Use the margin variable for spacing between links */
 }
 
-.nav-links a {
+.nav-links a{
     color: var(--background-color-light); /* Use the light background color variable for text color */
     text-decoration: none;
     padding: var(--padding-small) var(--padding-large); /* Use padding variables */
     border-radius: var(--border-radius-small); /* Use small border-radius variable */
-    transition: background-color 0.3s, transform 0.3s; /* Smooth transition for background color and transform */
+    transition:
+        background-color 0.3s,
+        transform 0.3s; /* Smooth transition for background color and transform */
+}
+.feedback{
+    font-size: var(--font-size-large);
+    color: var(--background-color-dark);
+    font-weight: 500;
+    text-decoration: none;
+    padding: var(--padding-small);
+    border-radius: var(--border-radius-small);
 }
 
-.nav-links a:hover {
+.nav-links a:hover, a[href="feedback"]:hover {
     background-color: var(--primary-color-dark); /* Use the dark primary color variable */
     transform: scale(1.01); /* Slightly scale up on hover */
 }
-
+/* Style the profile picture in the navbar */
+.nav-links a.profile-pic {
+    border: 2px solid rgb(215, 212, 212);
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nav-links a > abbr {
+    font-size: 1.25rem;
+}
 
 /* Home Page Container */
 .home-container {
     width: 100%;
+    /* height: fit-content; */
     max-width: var(--container-max-width); /* Use the container max-width variable */
     padding: var(--padding-xxlarge) var(--padding-medium) var(--padding-medium); /* Use padding variables */
     background-color: var(--background-color-dark); /* Use the dark background color variable */
     border-radius: var(--border-radius-medium); /* Use medium border-radius variable */
     box-shadow: var(--box-shadow-large); /* Use large box-shadow variable */
-    margin-top: calc(var(--padding-xlarge) + var(--header-height)); /* Adjust margin to account for the fixed header height */
+    margin-top: calc(
+        var(--padding-xlarge) + var(--header-height)
+    ); /* Adjust margin to account for the fixed header height */
 }
-
 
 /* Section */
 .section {
@@ -166,7 +185,6 @@ footer {
     margin-bottom: var(--margin-medium); /* Use the margin variable for consistent spacing */
     color: var(--heading-color); /* Use the heading color variable */
 }
-
 
 /* Feature Cards */
 .feature-cards {
@@ -184,7 +202,9 @@ footer {
     border-radius: var(--border-radius-medium); /* Use the medium border-radius variable */
     padding: var(--padding-medium); /* Use the medium padding variable */
     box-shadow: var(--box-shadow-small); /* Use the small box-shadow variable */
-    transition: transform 0.2s, box-shadow 0.2s; /* Smooth transition effects */
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s; /* Smooth transition effects */
     flex: 1 1 calc(33% - var(--margin-small)); /* Responsive card width with margin */
     max-width: 50%; /*Ensure card width is responsive*/
 }
@@ -246,24 +266,80 @@ footer {
     align-items: center;
 }
 
+.all-filters-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid black;
+    padding: var(--padding-medium);
+    font-size: var(--font-size-medium);
+}
+.serach-problem {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-small);
+}
+.serach-problem i {
+    font-size: calc(var(--font-size-medium)*1.3);
+    padding: 0 var(--padding-small);
+    color: var(--text-color-light);
+    /* cursor: pointer; */
+}
+.serach-problem input{
+    width: 100%;
+    padding: 0;
+    border: none !important;
+    outline: none;
+}
 
 /* Table Styles */
+/* .width-150{
+    width: 150px;
+} */
 table {
+    table-layout: fixed;
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: var(--margin-large);
+    margin-bottom: var(--margin-large); /* Ensure margin variable is defined */
 }
 
 thead {
-    background-color: var(--primary-color);
+    background-color: var(--primary-color); /* Ensure primary color is defined */
     color: white;
 }
 
 th, td {
-    padding: var(--padding-large);
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide text that overflows the cell */
+    text-overflow: ellipsis; /* Show ellipsis for overflowed text */
+    padding: var(--padding-large, 8px); /* Use fallback padding value */
     text-align: left;
-    border-bottom: 1px solid var(--border-color);
+    vertical-align: top; /* Optional: Align text to the top */
 }
+
+th:nth-child(2), td:nth-child(2) {
+    width: 25%;
+}
+th:nth-child(3), td:nth-child(3) {
+    width: 15%;
+}
+
+
+.icon {
+    width: 24px; /* Set the width of the SVG */
+    height: 24px; /* Set the height of the SVG */
+    color: #007BFF; /* Set the color of the SVG icon */
+    transition: color 0.3s, transform 0.3s; /* Smooth transition effects */
+  }
+  
+  /* SVG hover effect */
+  a:hover .icon {
+    color: #0056b3; /* Change color on hover */
+    transform: scale(1.1); /* Slightly enlarge the icon on hover */
+  }
 
 th {
     font-weight: bold;
@@ -274,9 +350,8 @@ tbody tr:nth-child(even) {
 }
 
 tbody tr:hover {
-    background-color: var(--background-color-dark);
+    background-color: var(--hover-color);
 }
-
 
 /* Button Styles */
 .button {
@@ -286,7 +361,7 @@ tbody tr:hover {
     padding: var(--padding-medium) var(--padding-large);
     border-radius: var(--border-radius-small);
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
+    transition:background-color 0.3s ,transform 0.3s;
     text-align: center;
     display: inline-block;
     text-decoration: none;
@@ -296,9 +371,6 @@ tbody tr:hover {
     background-color: var(--secondary-color-dark);
     transform: scale(1.05);
 }
-
-
-
 
 /* Form Styles */
 form {
@@ -319,7 +391,6 @@ form {
     align-items: center;
 } */
 
-
 /* Common Styles for Login and Signup Pages */
 .login-signup-container {
     width: 100%;
@@ -332,7 +403,7 @@ form {
 /* Form Container */
 .login-signup-form-container {
     width: 100%;
-    max-width: calc(var(--form-max-width)*0.55); /* Ensure form does not exceed a certain width */
+    max-width: calc(var(--form-max-width) * 0.55); /* Ensure form does not exceed a certain width */
     padding: var(--padding-xxlarge);
     background-color: var(--background-color-dark);
     border-radius: var(--border-radius-medium);
@@ -341,14 +412,13 @@ form {
 }
 
 /* Form Styles */
-.login-signup-form-container h2 {
+.login-signup-form-container h2, .feedback-container h2 {
     margin-bottom: var(--margin-large);
     color: var(--heading-color);
 }
 
-
 .form-group {
-    margin-bottom: var(--margin-large);
+    margin-bottom: var(--margin-small);
     text-align: left; /* Align labels and inputs to the left */
 }
 
@@ -358,13 +428,19 @@ form {
     color: var(--text-color-light);
 }
 
-.form-group input {
+.form-group input, .form-group select {
     width: 100%;
     padding: var(--padding-medium);
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius-small);
     box-sizing: border-box;
 }
+.form-group select option{
+    padding: 0 1rem;
+}
+/* select.select-box-option {
+    width:40px;
+} */
 
 .link {
     color: var(--link-color);
@@ -374,8 +450,6 @@ form {
 .link:hover {
     text-decoration: underline;
 }
-
-
 
 /* this is the details.html page */
 /* Details Page Styles */
@@ -395,7 +469,6 @@ form {
     padding: var(--padding-xxlarge);
     box-shadow: var(--box-shadow-large); /* Re-enabled box-shadow with variable */
 }
-
 
 /* Problem Title */
 .problem-name {
@@ -431,7 +504,6 @@ form {
     margin: var(--margin-xlarge) 0;
 }
 
-
 /* Add some general styles for lists and text fonts */
 ul.text-font {
     list-style-type: disc;
@@ -442,6 +514,11 @@ ul.text-font {
 }
 
 .heading-font {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:0 var(--padding-small);
+    padding-bottom: var(--padding-small);
     color: var(--heading-color);
     font-weight: bold;
 }
@@ -499,6 +576,7 @@ ul.text-font {
     color: var(--text-color);
     font-size: var(--font-size-large);
     border-bottom: 2px solid var(--background-footer-color);
+    padding: 0 var(--padding-xlarge);
     padding-bottom: var(--padding-small);
 }
 
@@ -511,7 +589,6 @@ ul.text-font {
     font-size: var(--font-size-medium);
     line-height: 1.6;
 }
-
 
 /* Code Container */
 .code-container {
@@ -535,7 +612,6 @@ ul.text-font {
     font-size: var(--font-size-medium);
 }
 
-
 /* solution form page */
 /* Solution Form Page Styles */
 
@@ -550,7 +626,6 @@ ul.text-font {
     box-shadow: var(--box-shadow-large);
 }
 
-
 /* Input Box Styles */
 .input-box {
     margin-bottom: var(--margin-large);
@@ -564,6 +639,7 @@ ul.text-font {
 }
 
 .input-box input[type="text"],
+.input-box input[type="email"],
 .input-box textarea {
     width: 100%;
     padding: var(--padding-medium);
@@ -636,7 +712,6 @@ ul.text-font {
     box-shadow: var(--box-shadow-large);
 }
 
-
 /* Input Box Styles */
 .input-box {
     margin-bottom: var(--margin-large);
@@ -689,7 +764,6 @@ ul.text-font {
     width: calc(100% - (2 * var(--padding-medium))); /* Full width minus padding */
 }
 
-
 /* Button Container */
 .button-container {
     margin-top: var(--margin-small);
@@ -697,14 +771,158 @@ ul.text-font {
 }
 
 /* upcoming contest form container listing */
-.upcoming-contest-container{
+.upcoming-contest-container {
     min-height: calc(var(--main-height));
     margin-top: var(--margin-xxlarge);
 }
-.upcoming-contest-table{
+.upcoming-contest-table {
     justify-content: center;
 }
 
+/* user Dashboard */
+.dashboard-container {
+    margin: var(--margin-xlarge) 0;
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    background-color: var(--background-user-color);
+    color: var(--background-color-dark);
+    width: 250px;
+    padding: var(--padding-large);
+    display: flex;
+    flex-direction: column;
+}
+
+.profile {
+    text-align: center;
+}
+
+.profile h2 {
+    margin: var(--margin-small) 0 var(--margin-small);
+}
+
+.profile p {
+    font-weight: 500;
+}
+
+.nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav ul li {
+    margin: var(--margin-large) 0;
+}
+
+.nav a {
+    color: var(--background-color-dark);
+    text-decoration: none;
+    font-size: var(--font-size-medium);
+    display: block;
+    padding: var(--padding-small);
+    border-radius: var(--border-radius-small);
+    transition: background-color 0.3s ease;
+}
+
+.nav a:hover {
+    background-color: var(--hover-color);
+}
+
+.main-content {
+    flex: 1;
+    padding: var(--padding-large);
+}
+
+.stats-overview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--margin-large);
+    margin-bottom: var(--margin-large);
+}
+
+.stat-card {
+    background: var(--background-color-dark);
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--box-shadow-large);
+    padding: var(--padding-large);
+    text-align: center;
+    width: calc(50% - var(--margin-large));
+    box-sizing: border-box;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.stat-card h3 {
+    margin: 0 0 var(--margin-small);
+    font-size: var(--font-size-large);
+    color: var(--secondary-color);
+}
+
+.stat-card p {
+    font-size: var(--font-size-xlarge);
+    margin: 0;
+    font-weight: bold;
+}
+
+.recent-activity,
+.upcoming-contests {
+    background: var(--background-color-dark);
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--box-shadow-large);
+    padding: var(--padding-large);
+    margin-bottom: var(--margin-large);
+}
+
+.recent-activity h3,
+.upcoming-contests h3 {
+    margin-top: 0;
+}
+
+.recent-activity ul,
+.upcoming-contests ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.recent-activity li,
+.upcoming-contests li {
+    padding: var(--padding-small) 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.recent-activity li:last-child,
+.upcoming-contests li:last-child {
+    border-bottom: none;
+}
+
+.stat-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--box-shadow-hover);
+}
+
+/* feedback */
+.feedback-container {
+    width: 50%;
+}
+.feedback-container .input-box {
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.feedback-container .input-box label{
+    width: 30%;
+    color: var(--text-color-light);
+}
+
+#open{
+    display: none;
+}
 /* Combined Responsive Design for All Pages */
 @media (max-width: 768px) {
     /* Add Problem Page */
@@ -726,7 +944,7 @@ ul.text-font {
         flex: 1 1 100%; /* Full width on smaller screens */
         max-width: 100%;
     }
-    
+
     .contest-platform-container {
         margin: 0;
         margin-top: inherit;
@@ -759,5 +977,132 @@ ul.text-font {
 
     .algorithm-box li {
         font-size: 0.9rem;
+    }
+    /* user dashboard */
+    .dashboard-container{
+        flex-direction: column;
+        align-items: center;
+    }
+    .sidebar{
+        width: 95%;
+    }
+    .stats-overview{
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    .stat-card{
+        width: 95%;
+    }
+    .nav{
+        text-align: center;
+    }
+}
+@media screen and (max-width: 500px){
+    .home-container{
+        margin-top: var(--margin-xlarge);
+    }
+    .sidebar, .stat-card{
+        width: 100%;
+    }
+    .nav{
+        text-align: center;
+    }
+    .hide{
+        display: none;
+    }
+    #open{
+        display: block;
+    }
+    .navbar{
+        margin: 0 2rem;
+    }
+    .links, .nav-links{
+        flex-direction: column;
+        position: absolute;
+        top: 40px;
+        left: 0px;
+        z-index: 100;
+        width: 100%;
+        background: #7c7979;
+        color: black;
+        font-size: 1.2rem;
+    }
+    .links{
+        top: 56px;
+        padding-bottom: 15rem;
+    }
+    .nav-links{
+        align-items: center;
+    }
+
+    .error-container{
+        height: 100vh;
+    }
+    .listing-form-container{
+        width: 100%;
+        padding: var(--padding-large);
+    }
+    .all-filters-container{
+        flex-direction: column;
+        gap: 16px;
+        border-color: var(--border-color);
+        border-radius: var(--border-radius-small);
+        margin-bottom: var(--margin-large);
+    }
+    .serach-problem{
+        width: 100%;
+    }
+    h1{
+        font-size: var(--font-size-medium);
+    }
+    table{
+        /* table-layout: auto; */
+        font-size: 15px;
+        overflow-x: auto;
+    }
+    th, td {
+        padding: var(--padding-small);
+    }
+    tr, td{
+        padding: var(--padding-small);
+    }
+    th:nth-child(1), td:nth-child(1) {
+        width: 60%;
+    }
+    th:nth-child(3), td:nth-child(3) {
+        width: 20%;
+    }
+    table thead tr th:nth-child(2) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* border: 2px solid black; */
+        width: 65px;
+    }
+    table thead tr th:nth-child(2) select{
+        width: fit-content;
+        font-size: 12px;
+        border-radius: var(--border-radius-medium);
+        outline: none;
+    }
+    .button{
+        padding: var(--padding-small);
+    }
+    .details-container{
+        padding: 0;
+        margin: var(--margin-xlarge) auto;
+    }
+    .feedback-container{
+        width: 100%;
+    }
+    .feedback-container .input-box{
+        display: block;
+    }
+    .feedback-container .input-box label {
+        width: 100%;
+    }
+    .heading-font div{
+        gap: 1.5rem !important;
     }
 }

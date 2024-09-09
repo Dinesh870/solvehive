@@ -1,41 +1,49 @@
 <%- include("../layout/boilerplate.ejs") %>
 
-    <div class="upcoming-contest-container listings-container">
-        <div class="listing-form-container upcoming-contest-table">
-            <table>
-                <!-- <caption>upcoming-contest</caption> -->
-                <thead>
-                    <tr>
-                        <th>S.No.</th>
-                        <th>Name</th>
-                        <th>Date</th>
-                        <th>Time</th>
-                        <!-- <th>Duration</th> -->
-                        <th>Link</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% let s_no=1; %>
-                        <% for(let contest of upcomingContests) { %>
-                            <tr>
-                                <td>
-                                    <%= s_no %>.
-                                </td>
-                                <td>
-                                    <%= contest.contestname %>
-                                </td>
-                                <td>
-                                    <%= contest.startDate %>
-                                </td>
-                                <td>
-                                    <%= contest.time %>
-                                </td>
-                                <td><a href="https://www.geeksforgeeks.org/events?itm_source=geeksforgeeks&itm_medium=main_header&itm_campaign=contests"
-                                        target="_blank">link</a></td>
-                            </tr>
-                            <% s_no++; %>
-                                <% } %>
-                </tbody>
-            </table>
+    <body>
+        <div class="upcoming-contest-container listings-container">
+            <div class="listing-form-container upcoming-contest-table">
+                <table>
+                    <!-- <caption>upcoming-contest</caption> -->
+                    <thead>
+                        <tr>
+                            <th>S.No.</th>
+                            <th>Name</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <!-- <th>Duration</th> -->
+                            <th>Link</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% let s_no=1; %>
+                            <% for(let contest of upcomingContests) { %>
+                                <tr>
+                                    <td>
+                                        <%= s_no %>.
+                                    </td>
+                                    <td>
+                                        <%= contest.contestname %>
+                                    </td>
+                                    <td>
+                                        <%= contest.startDate %>
+                                    </td>
+                                    <td>
+                                        <%= contest.time %>
+                                    </td>
+                                    <td>
+                                        <a href="https://www.geeksforgeeks.org/events?itm_source=geeksforgeeks&itm_medium=main_header&itm_campaign=contests" target="_blank">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon">
+                                              <path fill-rule="evenodd" d="M8.25 3.75H19.5a.75.75 0 0 1 .75.75v11.25a.75.75 0 0 1-1.5 0V6.31L5.03 20.03a.75.75 0 0 1-1.06-1.06L17.69 5.25H8.25a.75.75 0 0 1 0-1.5Z" clip-rule="evenodd" />
+                                            </svg>
+                                          </a>
+                                      </td>
+                                      
+                                </tr>
+                                <% s_no++; %>
+                                    <% } %>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
+    </body>

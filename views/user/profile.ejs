@@ -1,0 +1,74 @@
+<%- include("../layout/boilerplate.ejs") %>
+    <body>
+        <div class="dashboard-container">
+            <div class="sidebar">
+                <div class="profile">
+                    <%
+                        const username_array = user.name.split(' ');
+                        
+                        let first_last_name = undefined;
+                        if(username_array.length == 0) {
+                            first_last_name = "Unknown";
+                        } else {
+                            first_last_name = username_array[0];
+                            first_last_name = first_last_name[0].toUpperCase() + first_last_name.slice(1);
+                        }
+                    %>
+                    <h2>@<%= first_last_name %></h2>
+                    <p>Software Engineer</p>
+                </div>
+                <nav class="nav">
+                    <ul>
+                        <li><a href="#">Dashboard</a></li>
+                        <li><a href="problems">Problems</a></li>
+                        <li><a href="contests">Contests</a></li>
+                        <li><a href="#">Submissions</a></li>
+                        <li><a href="#">Settings</a></li>
+                        <li><a href="logout">logout</a></li>
+                    </ul>
+                </nav>
+            </div>
+    
+            <div class="main-content">
+                <!-- User Stats Overview -->
+                <div class="stats-overview">
+                    <div class="stat-card">
+                        <h3>Total Problems Solved</h3>
+                        <p>120</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Contests Participated</h3>
+                        <p>15</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Rank</h3>
+                        <p>Expert</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Accuracy</h3>
+                        <p>85%</p>
+                    </div>
+                </div>
+    
+                <!-- Recent Activity -->
+                <div class="recent-activity">
+                    <h3>Recent Activity</h3>
+                    <ul>
+                        <li>Submitted solution to "Two Sum"</li>
+                        <li>Completed "Binary Tree Inorder Traversal"</li>
+                        <li>Participated in "August Challenge 2024"</li>
+                    </ul>
+                </div>
+    
+                <!-- Upcoming Contests -->
+                <div class="upcoming-contests">
+                    <h3>Upcoming Contests</h3>
+                    <ul>
+                        <li>September Cook-Off - September 15, 2024</li>
+                        <li>October Long Challenge - October 1, 2024</li>
+                        <li>November Lunchtime - November 10, 2024</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>

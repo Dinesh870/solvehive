@@ -1,33 +1,113 @@
+<%- include("../layout/boilerplate.ejs") %>
+    <style>
+        button {
+            text-decoration: none;
+            display: inline-block;
+            padding: 9px 18px;
+            border: none;
+            margin: 5px;
+            color: black;
+        }
 
-    <%- include("../layout/boilerplate.ejs") %>
+        button:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        button.active{
+            background-color: red;
+        }
 
-    <div class="listings-container">
-        <div class="listing-form-container">
-            <h1>All Problems</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Problem Name</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% for(let problem of problemList) { %>
+        .previous,
+        .next {
+            background-color: #04AA6D;
+            color: #ffffff;
+        }
+    </style>
+
+    <!-- <body> -->
+        <div class="listings-container">
+            <div class="listing-form-container">
+                <!-- <h3>filter</h3> -->
+                <div class="all-filters-container">
+
+                    <div class="filter-box">
+                        <div class="filter">
+                            <label for="filter"><strong>Filter</strong></label>
+                            <select name="filter" id="filter">
+                                <option value="no-filter" <% if(filter==='no-filter' ) { %> selected <% } %>>No Filter
+                                </option>
+                                <option value="default" <% if(filter==='default' ) { %> selected <% } %>>Default
+                                </option>
+                                <option value="reverse" <% if(filter==='reverse' ) { %> selected <% } %>>Reverse
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group serach-problem">
+                        <label for="search"></label>
+                        <i class="fas fa-search"></i>
+                        <input type="search" id="search" name="search" value="" required placeholder="Search questions">
+                    </div>
+
+                </div>
+                <h1>All Problems</h1>
+                <table>
+                    <thead>
                         <tr>
-                            <td><strong><%= problem.problemname %></strong></td>
-                            <td>
-                                <form action="/problems/see/<%=problem._id%>" method="get">
-                                    <button type="submit" class="button">click</button>
-                                </form>
-                            </td>
+                            <th>Problem Name</th>
+                            <th>
+                                <label for="difficulty">Difficulty</label>
+                                <select name="difficulty" id="difficulty" class="select-box-option">
+                                    <option value="all" <% if(difficulty==='all' ) {%> selected <% } %>>All</option>
+                                    <option value="easy" <% if(difficulty==='easy' ) { %> selected <% } %>> Easy
+                                    </option>
+                                    <option value="medium" <% if(difficulty==='medium' ) { %> selected <% } %>> Medium
+                                    </option>
+                                    <option value="hard" <% if(difficulty==='hard' ) { %> selected <% } %>> Hard
+                                    </option>
+                                </select>
+                            </th>
+                            <th>Actions</th>
                         </tr>
+                    </thead>
+                    <tbody>
+                        <% for(let problem of problemList) { %>
+                            <tr>
+                                <td>
+                                    <abbr title="<%= problem.problemname %>">
+                                        <strong>
+                                            <%= problem.problemname %>
+                                        </strong>
+                                    </abbr>
+                                </td>
+                                <% let difficulty=problem.difficulty; difficulty=difficulty[0].toUpperCase() +
+                                    difficulty.slice(1); %>
+                                    <td class="width-150"><strong>
+                                            <%= difficulty %>
+                                        </strong></td>
+                                    <td>
+                                        <form action="/problems/see/<%=problem._id%>" method="get">
+                                            <button type="submit" class="button">click</button>
+                                        </form>
+                                    </td>
+                            </tr>
+                            <% } %>
+                    </tbody>
+                </table>
+                <div class="pagination-box">
+                    <div id="pagination">
+                            <button class="previous" title="title"><i class="fa-solid fa-angle-left"></i></button>
+                            <input type="hidden" name="total_page" id="" value="<%= total_page %>">
+                            <button class="next" title="title" ><i class="fa-solid fa-angle-right"></i></button>
+                    </div>
+                </div>
+                <% if(adminLogin) { %>
+                    <form action="/problems/new" method="GET">
+                        <button type="submit" class="button">Add New Problem</button>
+                    </form>
                     <% } %>
-                </tbody>
-            </table>
-
-            <form action="/problems/new" method="GET">
-                <button type="submit" class="button">Add New Problem</button>
-            </form>
+            </div>
         </div>
-    </div>
 
+    <!-- </body> -->

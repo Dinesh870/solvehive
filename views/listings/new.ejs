@@ -1,53 +1,67 @@
 <%- include("../layout/boilerplate.ejs") %>
 
-<div class="add-problem-container">
-    <form action="/problems/new" method="post">
-        <div class="input-box">
-            <label for="problemname">Problem Title</label>
-            <input class="problem-title" type="text" name="problemname" id="title" placeholder="Enter problem title" required>
-        </div>
+<body>
+    <div class="add-problem-container">
+        <form action="/problems/new" method="post">
+            <div class="input-box">
+                <label for="problemname">Problem Title</label>
+                <input class="problem-title" type="text" name="problemname" id="title" placeholder="Enter problem title" required>
+            </div>
 
-        <div class="input-box">
-            <label for="problemstatement">Problem Statement</label>
-            <textarea name="problemstatement" id="problem-statement" placeholder="Write here" required></textarea>
-        </div>
-
-        <div class="input-box">
-            <label for="sampleexample">Example</label>
-            <div class="single-box">
-                <ul id="input_example">
-                    <li class="input-element">
-                        <label for="input">Input</label>
-                        <input type="text" name="input" placeholder="Enter input" required>
-                        <label for="output">Output</label>
-                        <input type="text" name="output" placeholder="Enter output" required>
-                        <label for="explanation">Explanation</label>
-                        <input type="text" name="explanation" placeholder="Enter explanation" required>
-                    </li>
-                </ul>
-                <div class="button-container">
-                    <button type="button" class="button" onclick="addExample()">Add More Examples</button>
+            <div class="input-box">
+                <div class="form-group">
+                    <label for="difficulty">Difficulty Level</label>
+                    <select name="difficulty" required>
+                        <!-- <option value="">Select difficulty level</option> -->
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                    </select>
                 </div>
             </div>
-        </div>
-
-        <div class="input-box">
-            <label for="constraint">Constraints</label>
-            <div class="single-box">
-                <ul id="input_constraint">
-                    <li class="input-element">
-                        <label for="constraints"></label>
-                        <input type="text" name="constraints" placeholder="Enter constraint 1" required>
-                    </li>
-                </ul>
-                <div class="button-container">
-                    <button type="button" class="button" onclick="addConstraint()">Add More Constraints</button>
+    
+            <div class="input-box">
+                <label for="problemstatement">Problem Statement</label>
+                <textarea name="problemstatement" id="problem-statement" placeholder="Write here" required></textarea>
+            </div>
+    
+            <div class="input-box">
+                <label for="sampleexample">Example</label>
+                <div class="single-box">
+                    <ul id="input_example">
+                        <li class="input-element">
+                            <label for="input">Input</label>
+                            <input type="text" name="input" placeholder="Enter input" required>
+                            <label for="output">Output</label>
+                            <input type="text" name="output" placeholder="Enter output" required>
+                            <label for="explanation">Explanation</label>
+                            <input type="text" name="explanation" placeholder="Enter explanation" required>
+                        </li>
+                    </ul>
+                    <div class="button-container">
+                        <button type="button" class="button" onclick="addExample()">Add More Examples</button>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="button-container">
-            <button type="submit" class="button">Submit</button>
-        </div>
-    </form>
-</div>
+    
+            <div class="input-box">
+                <label for="constraint">Constraints</label>
+                <div class="single-box">
+                    <ul id="input_constraint">
+                        <li class="input-element">
+                            <label for="constraints"></label>
+                            <input type="text" name="constraints" placeholder="Enter constraint 1" required>
+                        </li>
+                    </ul>
+                    <div class="button-container">
+                        <button type="button" class="button" onclick="addConstraint()">Add More Constraints</button>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="button-container">
+                <button type="submit" class="button">Submit</button>
+            </div>
+        </form>
+    </div>    
+</body>

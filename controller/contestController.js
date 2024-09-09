@@ -1,53 +1,44 @@
-import { scrapeData } from '../scrapers/gfgScraper.js';
+import { scrapeData } from "../scrapers/gfgScraper.js";
+import { isLoggedOut } from "../utils/utils.js"
+import { fetchCodeforcesUpcomingContest } from "../scrapers/fetchCodeforceData.js";
+import ExpressError from "../utils/error.js";
 
 // Display contests list
-export const getAllContests = (req, res) => res.render('contests/contest.ejs');
+export const getAllContests = (req, res) => {
+  const isTrue = isLoggedOut(req,res);
+  res.render("contests/contest.ejs", { isTrue });
+};
 
-export const codeforcesContests = async (req, res)=> {
-    try {
-        const upcomingContests = await fetchCodeforcesUpcomingContest();
-        // console.log(upcomingContests)
-        if(!upcomingContests) {
-            res.status(500).send("server error");
-        }
-        res.status(200).render("contests/showUpcomingContest.ejs", {upcomingContests});
-    } catch (error) {
-        console.log(error);
+export const codeforcesContests = async (req, res, next) => {
+  const isTrue = isLoggedOut(req, res);
+  try {
+    const upcomingContests = await fetchCodeforcesUpcomingContest();
+    if (!upcomingContests) {
+      return next(new ExpressError(500, "Server Error"));
     }
-}
-
-// function to fetch data from codeforces
-async function fetchCodeforcesUpcomingContest() {
-    try{
-        const response = await fetch("https://codeforces.com/api/contest.list");
-        if(!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const data = await response.json();
-        if(data.status === 'OK') {
-            const allContests = data.result;
-            const upcomingContests = allContests.filter(contest=> contest.phase === 'BEFORE');
-            // sorting the upcomingContest array in increasing order
-            upcomingContests.sort((a,b)=>(a.startTimeSeconds - b.startTimeSeconds));
-            return upcomingContests;
-        } else {
-            console.log("failed to fetch data");
-            return [];
-        }
-    } catch(error) {
-        console.error('Error fetching data:', error);
-        return [];
-    }
-}
+    res
+      .status(200)
+      .render("contests/showUpcomingContest.ejs", {
+        upcomingContests,
+        isTrue,
+      });
+  } catch (error) {
+    next(error);
+  }
+};
 
 // GEEKS FOR GEEKS
-export const gfgContests = async (req,res) => {
-    try {
-        const scraped_data = await scrapeData();
-        // console.log(scraped_data);
-        res.status(200).render("contests/showContestData.ejs", {upcomingContests :scraped_data});
-    } catch (error) {
-        console.log(error);
-        res.status(500).send("Server Error")
-    }
-}
+export const gfgContests = async (req, res, next) => {
+  const isTrue = isLoggedOut(req, res);
+  try {
+    const scraped_data = await scrapeData();
+    res
+      .status(200)
+      .render("contests/showContestData.ejs", {
+        upcomingContests: scraped_data,
+        isTrue,
+      });
+  } catch (error) {
+    next(error);
+  }
+};

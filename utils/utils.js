@@ -21,7 +21,6 @@ export const isLoggedOut = (req, res) => {
 export const hashPassword = async (newpassword) => {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = bcrypt.hash(newpassword, salt);
-    // console.log(hashedPassword);
     
     return hashedPassword;
 };
@@ -54,7 +53,6 @@ export const generateOPT = ()=>{
     lowerCaseAlphabets: false,
     specialChars: false
   });
-  // console.log(OTP);
   return OTP;
 }
 

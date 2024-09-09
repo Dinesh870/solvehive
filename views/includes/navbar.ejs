@@ -1,10 +1,27 @@
 
-    <nav class="navbar">
-        <div class="logo"><a href="/">SolveHive</a></div>
-        <div class="nav-links">
-            <a href="/problems">Problems</a>
-            <a href="/contests">Contests</a>
-            <a href="/signup">Sign Up</a>
-            <a href="/login">Log In</a>
-        </div>
-    </nav>
+    <header>
+        <nav class="navbar">
+            <div class="logo"><a href="/">SolveHive</a></div>
+            <a href="#" id="open" onclick="myfun()">
+                <i class="fa-solid fa-bars"></i>
+            </a>
+            <div class="links hide">
+                <div class="nav-links">
+                    <a href="/problems">Problems</a>
+                    <a href="/contests">Contests</a>
+                    <% if(isTrue) { %>
+                        <a href="/signup">Signup</a>
+                        <a href="/login">Login</a>
+                    <% } else { %>
+                        <a href="/profile" class="profile-pic">
+                            <abbr title="see your profile">
+                                <i class="fa-solid fa-user"></i>
+                            </abbr>
+                        </a>
+                    <% } %>
+                    <!-- <a href="/admin">Admine</a> -->
+                </div>
+                <a class="feedback" href="feedback">Feedback</a>
+            </div>
+        </nav>
+    </header>

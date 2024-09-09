@@ -1,0 +1,63 @@
+<%- include("../layout/boilerplate.ejs") %>
+
+    <body>
+        <div class="details-container">
+            <form action="/problems/see/<%= problem._id %>/edit" method="post">
+                    <div class="details-problem-container">
+                    <div class="input-box">
+                        <label for="problemname">Problem Title</label>
+                        <input class="problem-title" type="text" name="problemname" id="title"
+                            value="<%= problem.problemname %>" required>
+                    </div>
+    
+                    <div class="input-box">
+                        <div class="form-group">
+                            <label for="difficulty">Difficulty Level</label>
+                            <select name="difficulty" required>
+                                <option value="<%= problem.difficulty %>">Current level: <%= problem.difficulty[0].toUpperCase() + problem.difficulty.slice(1) %></option>
+                                <option value="easy">Easy</option>
+                                <option value="medium">Medium</option>
+                                <option value="hard">Hard</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <label for="problemstatement">Problem Statement</label>
+                        <textarea name="problemstatement" id="problem-statement"
+                            aria-valuenow="<%= problem.problemstatement %>"
+                            required><%= problem.problemstatement %></textarea>
+                    </div>
+    
+                    <% let count=1; %> <!--  Declare count variable once here -->
+                        <% problem.sampleexample.forEach((example, index)=> { %>
+                            <div class="input-box">
+                                <p class="text-font"><strong>Example <%= count %></strong></p>
+                                <div class="single-box">
+                                    <ul id="input_example">
+                                        <li class="input-element">
+                                            <label for="input">Input</label>
+                                            <input type="text" name="input" value="<%= example.input %>" required>
+                                            <label for="output">Output</label>
+                                            <input type="text" name="output" value="<%= example.output %>" required>
+                                            <label for="explanation">Explanation</label>
+                                            <input type="text" name="explanation" value="<%= example.explanation %>">
+                                        </li>
+                                    </ul>
+                                </div>
+                                <br>
+                                <% count++; }); %>
+                            </div>
+                            <div class="constraints-container">
+                                <p><strong class="heading-font">Constraints</strong></p>
+                                <ul class="margin-left text-font">
+                                    <% problem.constraints.forEach(constraint => { %>
+                                        <input type="text" name="constraints" value="<%= constraint%>" required>
+                                    <% }); %>
+                                </ul>
+                            </div>
+                        </div>
+                    <button type="submit" class="button">save</button>
+            </form>
+        </div>
+    </body>
+    <!-- </div> -->
